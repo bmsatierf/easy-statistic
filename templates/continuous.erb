@@ -1,0 +1,28 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th style="width:10%;" data-toggle="tooltip" title="first tooltip">Classes</span></th>
+      <th style="width:12.5%;">Int. de classe</th>
+      <th style="width:10%;">fi</th>
+      <th style="width:12.5%;">fr%</th>
+      <th style="width:17.5%;">F</th>
+      <th style="width:12.5%;">F%</th>
+      <th style="width:12.5%;">xi</th>
+      <th style="width:12.5%;">Média (xi*fi)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @table.each do |row| %>
+    <tr>
+      <td><%= row[1]["class"] %></td>
+      <td><%= row[1]["at"][0] %> <img src="/img/sep.png" alt="|----"/> <%= row[1]["at"][1] %></td>
+      <td><%= row[1]["fi"] %></td>
+      <td><%= row[1]["fr%"] %>%</td>
+      <td><%= row[1]["F"] %></td>
+      <td><%= row[1]["F%"] %>%</td>
+      <td><%= row[1]["xi"] %></td>
+      <td><%= row[1]["xi*fi"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

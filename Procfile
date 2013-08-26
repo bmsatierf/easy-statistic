@@ -1,0 +1,1 @@
+web: bundle exec ruby easy.rb -p $PORT
