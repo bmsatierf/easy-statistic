@@ -98,7 +98,7 @@ class Statistic
   end
 
   def count_between(lower, upper)
-    @ranked_data.count { |v| v.between?(lower, upper) }
+    @ranked_data.count { |v| v.between?(lower, (upper - 1)) }
   end
 
   def frequence_position(index, accumulated_frequency, frequence)

@@ -99,9 +99,9 @@ class EasyTest < Test::Unit::TestCase
     stat.process_data("continuous")
     assert_equal(
     {
-      1=>{"class"=>1, "at"=>[20, 27], "fi"=>4, "fr%"=>40, "F"=>"4 (1° a 4° posição)",   "F%"=>40,  "xi"=>23.5, "xi*fi"=>94.0},
-      2=>{"class"=>2, "at"=>[27, 34], "fi"=>4, "fr%"=>40, "F"=>"8 (5° a 8° posição)",   "F%"=>80,  "xi"=>30.5, "xi*fi"=>122.0},
-      3=>{"class"=>3, "at"=>[34, 41], "fi"=>3, "fr%"=>30, "F"=>"11 (9° a 11° posição)", "F%"=>110, "xi"=>37.5, "xi*fi"=>112.5}
+      1=>{"class"=>1, "at"=>[20, 27], "fi"=>3, "fr%"=>30, "F"=>"3 (1° a 3° posição)",   "F%"=>30,  "xi"=>23.5, "xi*fi"=>70.5},
+      2=>{"class"=>2, "at"=>[27, 34], "fi"=>4, "fr%"=>40, "F"=>"7 (4° a 7° posição)",   "F%"=>70,  "xi"=>30.5, "xi*fi"=>122.0},
+      3=>{"class"=>3, "at"=>[34, 41], "fi"=>3, "fr%"=>30, "F"=>"10 (8° a 10° posição)", "F%"=>100, "xi"=>37.5, "xi*fi"=>112.5}
     },
     stat.table)
   end
