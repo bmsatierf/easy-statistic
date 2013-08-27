@@ -21,10 +21,12 @@
   <ul id="data_tab" class="nav nav-tabs">
     <li class="active"><a href="#table">Tabela</a></li>
     <li><a href="#central_tendency">Medidas de tendência central</a></li>
+    <li><a href="#ranked_data">Rol</a></li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane fade in active" id="table"><%= partial(@statistic.distribution_type) %></div>
     <div class="tab-pane fade" id="central_tendency"><%= partial(:central_tendency) %></div>
+    <div class="tab-pane fade" id="ranked_data"><%= partial(:ranked_data) %></div>
   </div>
 <% end %>
