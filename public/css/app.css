@@ -5,6 +5,7 @@ table { margin-top: 25px; }
 #data { width: 100%; }
 #data_tab { margin-top: 25px; }
 .slogan { padding: 40px 0; background: #fff url('../img/logo-fatec.png') right 65px no-repeat; }
+@media all and (max-width: 700px) { .slogan { background: none; }}
 .action{ margin-top: 25px; padding: 10px; border-top: 1px solid #ccc; background-color: #eee; }
 .action input { margin-right: 5px; }
 .table-striped th { background-color: #ddd; text-shadow: #fff 1px 1px; }
