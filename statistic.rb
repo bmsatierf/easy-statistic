@@ -165,7 +165,7 @@ class Statistic
     elements.each do |element|
       @table.each do |row|
         lower_range, upper_range = row[1]["at"][0], row[1]["at"][1]
-        arr_mode << (lower_range + upper_range) / 2 if element[0].between?(lower_range, upper_range)
+        arr_mode << (lower_range + upper_range).to_f / 2.to_f if element[0].between?(lower_range, upper_range)
       end
     end
 
@@ -188,7 +188,7 @@ class Statistic
   def calculate_discrete_median
     mid = @ranked_data.length / 2
     @median = if @ranked_data.length % 2 == 0
-      (@ranked_data[mid] + @ranked_data[mid - 1]) / 2
+      (@ranked_data[mid].to_f + @ranked_data[mid - 1].to_f) / 2.to_f
     else
       @ranked_data[mid + 1]
     end
@@ -198,7 +198,7 @@ class Statistic
     mid = @ranked_data.length / 2
     lower_range = @table[@median_class]["at"][0]
     previous_f = @median_class == 1 ? 0 : @table[@median_class - 1]["F"].split(" ")[0].to_i
-
-    @median = lower_range + (((mid - previous_f) / @table[@median_class]["fi"]) * @class_interval)
+    
+    @median = lower_range + (((mid - previous_f).to_f / @table[@median_class]["fi"].to_f) * @class_interval)
   end
 end

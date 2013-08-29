@@ -127,19 +127,19 @@ class EasyTest < Test::Unit::TestCase
   def test_continuous_mode_unimodal
     stat = Statistic.new("1000,1800,2000,2000,2000,2800,3000,3000,3100,4000")
     stat.process_data("continuous")
-    assert_equal("1500", stat.mode)
+    assert_equal("1500.5", stat.mode)
   end
 
   def test_continuous_mode_bimodal
     stat = Statistic.new("1000,1800,2000,2000,2000,2800,3000,3000,3000,4000")
     stat.process_data("continuous")
-    assert_equal("1500 e 2501", stat.mode)
+    assert_equal("1500.5 e 2501.5", stat.mode)
   end
 
   def test_continuous_mode_multimodal
     stat = Statistic.new("1000,1000,1000,2500,3000,3000,3000,4000,4000,4000")
     stat.process_data("continuous")
-    assert_equal("1500, 2501 e 3502", stat.mode)
+    assert_equal("1500.5, 2501.5 e 3502.5", stat.mode)
   end
 
   def test_continuous_mode_amodal
