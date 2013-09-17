@@ -1,15 +1,20 @@
+html { overflow-y: scroll; }
 body { padding-top: 50px; }
 h1 span { font-weight: lighter; color: #aaa; font-size: 18px;}
-h3 { margin: 35px 0 25px 0; font-weight: lighter; }
+h3 { margin: 35px 0 35px 0; font-weight: lighter; }
 table { margin-top: 25px; }
-#data { width: 100%; }
+#data { width: 100%; margin-bottom: 10px; }
 #data_tab { margin-top: 25px; }
+#raw strong { margin-right: 10px; }
 .slogan { padding: 40px 0; background: #fff url('../img/logo-fatec.png') right 65px no-repeat; }
-@media all and (max-width: 700px) { .slogan { background: none; }}
+@media all and (max-width: 700px) { .slogan { background: none; } #fork-me { display: none; }}
 .action{ margin-top: 25px; padding: 10px; border-top: 1px solid #ccc; background-color: #eee; }
 .action input { margin-right: 5px; }
 .table-striped th { background-color: #ddd; text-shadow: #fff 1px 1px; }
 .tab-pane { margin-top: 35px; }
+.tab-content { min-height: 400px; }
+.histogram { text-align: center; }
+.chart { position: relative; width:43%; height: 350px; }
 .external {padding-right: 15px; background: #fff url("../img/external.png") no-repeat right center; }
 .alert { display: none; }
 .footer { margin-top: 50px; border-top: 1px solid #ccc; }

@@ -1,14 +1,15 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th style="width:10%;" data-toggle="tooltip" title="first tooltip">Classes</span></th>
-      <th style="width:12.5%;">Int. de classe</th>
+      <th style="width:10%;">Classes</span></th>
+      <th style="width:14%;">Int. de classe</th>
       <th style="width:10%;">fi</th>
-      <th style="width:12.5%;">fr%</th>
-      <th style="width:17.5%;">F</th>
-      <th style="width:12.5%;">F%</th>
-      <th style="width:12.5%;">xi</th>
-      <th style="width:12.5%;">Média (xi*fi)</th>
+      <th style="width:10%;">fr%</th>
+      <th style="width:16%;">F</th>
+      <th style="width:10%;">F%</th>
+      <th style="width:10%;">xi</th>
+      <th style="width:10%;">Média (xi*fi)</th>
+      <th style="width:10%;">Variância</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,7 @@
       <td><%= row[1]["F%"] %>%</td>
       <td><%= row[1]["xi"] %></td>
       <td><%= row[1]["xi*fi"] %></td>
+      <td><%= row[1]["variance"] %></td>
     </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default histogram">
+      <div class="panel-heading">
+        <h4 class="panel-title">Histograma de frequencia simples</h4>
+      </div>
+      <div id="chart-container" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default histogram">
+      <div class="panel-heading">
+        <h4 class="panel-title">Histograma de frequencia acumulada</h4>
+      </div>
+      <div id="accumulated-chart-container" class="chart"></div>
+    </div>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+  $(function () {
+    // fr% ÷ f
+    $('#chart-container').highcharts({
+      chart: { type: 'column', margin: [ 50, 50, 60, 70] },
+      xAxis: { categories: <%= @table.map { |h| h[1]["xi"] } %> },
+      yAxis: { min: 0, title: false },
+      title: false,
+      legend: false,
+      credits: false,
+      tooltip: false,
+      series: [{
+        name: 'Population',
+        data: <%= @table.map { |h| h[1]["fi"] } %>,
+        dataLabels: {
+          enabled: true,
+          rotation: 0,
+          color: '#FFFFFF',
+          align: 'center',
+          x: 0,
+          y: 25,
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif',
+            textShadow: '0 0 3px black'
+          }
+        }
+      }]
+    });
+
+    // F% ÷ F
+    $('#accumulated-chart-container').highcharts({
+      chart: { type: 'column', margin: [ 50, 50, 60, 70] },
+      xAxis: { categories: <%= @chart["xAxis"] %> },
+      yAxis: {
+        min: 0,
+        title: false,
+        stackLabels: { enabled: true, style: { fontWeight: 'bold' } }
+      },
+      title: false,
+      legend: false,
+      credits: false,
+      tooltip: false,
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          }
+        }
+      },
+      series: [ <%= @chart["data"] %> ]
+    });
+  });
+<% end %>

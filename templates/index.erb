@@ -7,7 +7,11 @@
 
 <form action="/" method="post" id="raw" name="raw">
   <textarea id="data" rows="6" name="raw[data]" placeholder="Dados brutos, separados por vírgula. Exemplo: 10,20,30,40,50"><%= @raw_data %></textarea>
-  <input type="hidden" id="distribution_type" name="raw[distribution_type]">
+  <input type="hidden" id="distribution_type" name="distribution_type">
+
+  <strong>Referência:</strong>
+  <label class="radio-inline"><input type="radio" name="collection_type" id="population" value="population" <%= is_checked?('population') %>> População</label>
+  <label class="radio-inline"><input type="radio" name="collection_type" id="sample" value="sample" <%= is_checked?('sample') %>> Amostra</label>
 
   <div class="action">
     <input type="submit" value="Variável Discreta" id="submit_discrete_form" class="btn btn-primary">
@@ -18,15 +22,19 @@
 <% if @statistic %>
   <h3>Processamento da variável quantitativa <%= @statistic.distribution_type == "discrete" ? "discreta" : "contínua" %></h3>
 
-  <ul id="data_tab" class="nav nav-tabs">
+  <ul id="data_tab" class="nav nav-tabs nav-justified">
     <li class="active"><a href="#table">Tabela</a></li>
     <li><a href="#central_tendency">Medidas de tendência central</a></li>
+    <li><a href="#dispersion_measure">Medidas de dispersão</a></li>
+    <li id="chart_action"><a href="#chart">Gráfico</a></li>
     <li><a href="#ranked_data">Rol</a></li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane fade in active" id="table"><%= partial(@statistic.distribution_type) %></div>
     <div class="tab-pane fade" id="central_tendency"><%= partial(:central_tendency) %></div>
+    <div class="tab-pane fade" id="dispersion_measure"><%= partial(:dispersion_measure) %></div>
+    <div class="tab-pane fade" id="chart"><%= partial(:chart) %></div>
     <div class="tab-pane fade" id="ranked_data"><%= partial(:ranked_data) %></div>
   </div>
 <% end %>

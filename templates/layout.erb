@@ -17,7 +17,7 @@
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <a href="https://github.com/bmsatierf/easy-statistic"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+        <a href="https://github.com/bmsatierf/easy-statistic" id="fork-me"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
         <div class="navbar-header">
           <a href="/" class="navbar-brand">Easy Statistic</a>
@@ -51,6 +51,13 @@
 
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/highcharts.js"></script>
     <script src="/js/app.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        <%= yield_content :javascript %>
+      });
+    </script>
   </body>
 </html>

@@ -1,11 +1,13 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th style="width:20%;">xi</th>
-      <th style="width:20%;">fi</th>
-      <th style="width:20%;">fr%</th>
-      <th style="width:20%;">F</th>
-      <th style="width:20%;">F%</th>
+      <th style="width:14%;">xi</th>
+      <th style="width:14%;">fi</th>
+      <th style="width:14%;">fr%</th>
+      <th style="width:14%;">F</th>
+      <th style="width:14%;">F%</th>
+      <th style="width:14%;">Média (xi*fi)</th>
+      <th style="width:16%;">Variância</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +18,8 @@
       <td><%= row[1]["fr%"] %>%</td>
       <td><%= row[1]["F"] %></td>
       <td><%= row[1]["F%"] %>%</td>
+      <td><%= row[1]["xi*fi"] %></td>
+      <td><%= row[1]["variance"] %></td>
     </tr>
     <% end %>
   </tbody>

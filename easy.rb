@@ -4,6 +4,8 @@ require File.expand_path('statistic.rb')
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/partial'
+require 'sinatra/content_for'
+require 'sinatra/reloader' if development?
 
 set :partial_template_engine, :erb
 set :views, File.dirname(__FILE__) + '/templates'
@@ -19,8 +21,9 @@ post '/' do
     @error = 'É necessário informar os dados a serem processados, separados por vírgula.'
   else
     @statistic = Statistic.new(@raw_data)
-    @statistic.process_data(params["raw"]["distribution_type"])
+    @statistic.process_data(params["distribution_type"], params["collection_type"])
     @table = @statistic.table
+    @chart = @statistic.chart
   end
 
   erb :index
@@ -35,22 +38,9 @@ helpers do
     return "active" if page == request.path
     return ""
   end
-end
 
-class Array
-  def to_sentence
-    words_connector = ", "
-    two_words_connector = " e "
-
-    case length
-      when 0
-        ""
-      when 1
-        self[0].to_s
-      when 2
-        "#{self[0]}#{two_words_connector}#{self[1]}"
-      else
-        "#{self[0...-1].join(words_connector)}#{two_words_connector}#{self[-1]}"
-    end
+  def is_checked?(option)
+    return "checked" if option == params["collection_type"] || option == "population" && params["collection_type"].nil?
+    return ""
   end
 end
