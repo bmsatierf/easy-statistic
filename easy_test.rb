@@ -27,11 +27,13 @@ class EasyTest < Test::Unit::TestCase
 
   def test_setup_sorted_array
     stat = Statistic.new("3,1,5,6,2,4")
+    stat.process_data("discrete", "population")
     assert_equal([1,2,3,4,5,6], stat.ranked_data)
   end
 
   def test_setup_uniq_count
     stat = Statistic.new("1,1,2,3,3,3,4,4,5")
+    stat.process_data("discrete", "population")
     assert_equal({5=>1, 1=>2, 2=>1, 3=>3, 4=>2}, stat.uniq_count)
   end
 
@@ -242,5 +244,60 @@ class EasyTest < Test::Unit::TestCase
     stat = Statistic.new("1,1,2,3,3,3,4,4,5")
     stat.process_data("continuous", "population")
     assert_equal("35.31", stat.coefficient_of_variation)
+  end
+
+  # NORMAL DISTRIBUTION TESTS
+  def test_normal_distribution_greater_than_before_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("greater-than", 100.0, 10.0, "", "90")
+    assert_equal(84.13, probability)
+  end
+
+  def test_normal_distribution_greater_than_after_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("greater-than", 100.0, 10.0, "", "120")
+    assert_equal(2.28, probability)
+  end
+
+  def test_normal_distribution_between_before_and_after_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("between", 100.0, 10.0, "98", "110")
+    assert_equal(42.06, probability)
+  end
+
+  def test_normal_distribution_between_before_and_on_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("between", 100.0, 10.0, "95", "100")
+    assert_equal(19.15, probability)
+  end
+
+  def test_normal_distribution_between_on_mean_and_after
+    stat = Statistic.new
+    probability = stat.normal_distribution("between", 100.0, 10.0, "100", "110")
+    assert_equal(34.13, probability)
+  end
+
+  def test_normal_distribution_between_after_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("between", 100.0, 10.0, "110", "120")
+    assert_equal(13.59, probability)
+  end
+
+  def test_normal_distribution_less_before_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("less-than", 100.0, 10.0, "93", "")
+    assert_equal(24.2, probability)
+  end
+
+  def test_normal_distribution_less_and_greater_than
+    stat = Statistic.new
+    probability = stat.normal_distribution("less-and-greater-than", 100.0, 0.5, "98.2", "100.6")
+    assert_equal(11.52, probability)
+  end
+
+  def test_normal_distribution_less_and_greater_than_inverse
+    stat = Statistic.new
+    probability = stat.normal_distribution("less-and-greater-than", 22.0, 4.0, "25", "20")
+    assert_equal(46.49, probability)
   end
 end
