@@ -6,12 +6,17 @@ require 'sinatra'
 require 'sinatra/partial'
 require 'sinatra/content_for'
 require 'sinatra/reloader' if development?
+require 'json'
 
 set :partial_template_engine, :erb
 set :views, File.dirname(__FILE__) + '/templates'
 
 get '/' do
   erb :index
+end
+
+get '/about' do
+  erb :about
 end
 
 post '/' do
@@ -29,8 +34,23 @@ post '/' do
   erb :index
 end
 
-get '/about' do
-  erb :about
+get '/normal-distribution' do
+  content_type :json
+
+  statistic = Statistic.new
+
+  probability = statistic.normal_distribution(
+                  params["type"],
+                  params["mean"].to_f,
+                  params["standard-deviation"].to_f,
+                  params["less"],
+                  params["greater"])
+
+  { :probability => probability }.to_json
+end
+
+get '*' do
+  redirect '/', 301
 end
 
 helpers do
