@@ -1,7 +1,8 @@
 html { overflow-y: scroll; }
 body { padding-top: 50px; }
 h1 span { font-weight: lighter; color: #aaa; font-size: 18px;}
-h3 { margin: 35px 0 35px 0; font-weight: lighter; }
+h3 { margin: 35px 0 35px 0; font-weight: normal; }
+h4 { margin-bottom: 30px; font-weight: normal; }
 table { margin-top: 25px; }
 #data { width: 100%; margin-bottom: 10px; }
 #data_tab { margin-top: 25px; }
@@ -14,6 +15,12 @@ table { margin-top: 25px; }
 .tab-pane { margin-top: 35px; }
 .tab-content { min-height: 400px; }
 .histogram { text-align: center; }
+#normal-distribution { margin: 33px 0 40px 0; }
+#normal-distribution p { margin-bottom: 35px; }
+#normal-distribution input[type=number] { width: 80px; margin: 0 25px; }
+#probability-question, #probability-answer, #ajax-loader, #mean-value, #update-mean, #standard-deviation-value, #update-standard-deviation { display: none; }
+#update-mean, #update-standard-deviation { margin-right: 20px; }
+#edit-mean, #edit-standard-deviation { font-weight: bolder; }
 .chart { position: relative; width:43%; height: 350px; }
 .external {padding-right: 15px; background: #fff url("../img/external.png") no-repeat right center; }
 .alert { display: none; }

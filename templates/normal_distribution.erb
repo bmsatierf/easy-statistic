@@ -1,0 +1,46 @@
+<h4>Cálculo de probabilidade</h4>
+
+<form class="form-inline" id="normal-distribution" name="probability" role="form" novalidate>
+  <p>
+    Considerando a média
+    <a href="#" id="edit-mean" data-toggle="tooltip" data-placement="top" title="Alterar a média" data-original-title="Alterar a média"><%= @statistic.mean %></a>
+    <input type="number" value="<%= @statistic.mean %>" id="mean-value" name="mean" class="form-control">
+    <button type="button" id="update-mean" class="btn btn-info">Alterar</button>
+    e o desvio padrão
+    <a href="#" id="edit-standard-deviation" data-toggle="tooltip" data-placement="top" title="Alterar o desvio padrão" data-original-title="Alterar o desvio padrão"><%= @statistic.standard_deviation %></a>
+    <input type="number" value="<%= @statistic.standard_deviation %>" id="standard-deviation-value" name="standard-deviation" class="form-control">
+    <button type="button" id="update-standard-deviation" class="btn btn-info">Alterar</button>,
+    qual é a probabilidade de ocorrer um evento <span id="probability-question"></span>
+  </p>
+
+  <div class="form-group">
+    <select class="form-control" name="type" id="calculation-type">
+      <option value="choose">Tipo de comparação</option>
+      <option value="greater-than">Maior que</option>
+      <option value="less-than">Menor que</option>
+      <option value="between">Entre</option>
+      <option value="less-and-greater-than">Menor que e maior que</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <input type="number" name="less" id="less-than"  class="form-control">
+  </div>
+
+  <div class="form-group" id="end">e</div>
+
+  <div class="form-group">
+    <input type="number" name="greater" id="greater-than" class="form-control">
+  </div>
+
+  <input type="submit" value="Calcular" id="calculate" class="btn btn-warning">
+</form>
+
+<image src="/img/loading.gif" id="ajax-loader" alt="Carregando" />
+
+<div id="probability-answer" class="alert alert-success">A probabilidade é de <strong><span id="probability-value"></span>%</strong></div>
+
+<% content_for :javascript do %>
+  $('#edit-mean').tooltip();
+  $('#edit-standard-deviation').tooltip();
+<% end %>
