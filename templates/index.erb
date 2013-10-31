@@ -1,7 +1,7 @@
 <% if @error %>
   <div class="alert alert-danger">
     <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
-    <p><strong>Atenção!</strong> <%= @error%></p>
+    <p><strong>Atenção!</strong> <%= @error %></p>
   </div>
 <% end %>
 
@@ -20,7 +20,7 @@
 </form>
 
 <% if @statistic %>
-  <h3>Processamento da variável quantitativa <%= @statistic.distribution_type == "discrete" ? "discreta" : "contínua" %></h3>
+  <h3>Processamento da variável quantitativa <%= distribution(@statistic.distribution_type) %></h3>
 
   <ul id="data_tab" class="nav nav-tabs">
     <li class="active"><a href="#table">Tabela</a></li>

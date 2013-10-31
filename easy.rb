@@ -63,4 +63,8 @@ helpers do
     return "checked" if option == params["collection_type"] || option == "population" && params["collection_type"].nil?
     return ""
   end
+
+  def distribution(type)
+    type == "discrete" ? "discreta" : "contínua"
+  end
 end
