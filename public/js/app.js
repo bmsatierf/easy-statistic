@@ -56,7 +56,12 @@ $(document).ready(function() {
   }
 
   $('input[type="number"]').keydown(function(e) {
+    hideQuestionAndAnswer();
     if(!isNumericInput(e)){ e.preventDefault(); }
+  });
+
+  $('input[type="number"]').change(function(e) {
+    hideQuestionAndAnswer();
   });
 
   $('.form-group input[type="number"]').keyup(function(e) {
@@ -70,8 +75,7 @@ $(document).ready(function() {
   });
 
   function handleProbabilityQuestion(input){
-    $('#probability-answer').hide();
-    $('#probability-question').hide();
+    hideQuestionAndAnswer();
 
     if($(input).val()) {
       switch($('#calculation-type').val()) {
@@ -99,6 +103,11 @@ $(document).ready(function() {
 
       $('#probability-question').fadeIn();
     }
+  }
+
+  function hideQuestionAndAnswer(){
+    $('#probability-answer').hide();
+    $('#probability-question').hide();
   }
 
   $('#normal-distribution').submit(function(e){
