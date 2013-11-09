@@ -1,5 +1,8 @@
 #encoding: utf-8
 
+require 'simplecov'
+SimpleCov.start
+
 ENV['RACK_ENV'] = 'test'
 
 require File.expand_path('easy.rb')
@@ -17,6 +20,11 @@ class EasyTest < Test::Unit::TestCase
     get '/'
     assert last_response.ok?
     assert last_response.body.include?('Estatística')
+  end
+
+  def test_get_redirected_to_index
+    get '/other'
+    assert last_response.redirect?
   end
 
   def test_get_about
@@ -247,6 +255,12 @@ class EasyTest < Test::Unit::TestCase
   end
 
   # NORMAL DISTRIBUTION TESTS
+  def test_perform_json_request
+    get '/normal-distribution', "format" => "json", "type" => "greater-than", "mean" => "100", "standard-deviation" => "10", "less" => "", "greater" => "90"
+    assert last_response.ok?
+    assert last_response.body.include?('{"probability":84.13}')
+  end
+
   def test_normal_distribution_greater_than_before_mean
     stat = Statistic.new
     probability = stat.normal_distribution("greater-than", 100.0, 10.0, "", "90")
@@ -283,6 +297,12 @@ class EasyTest < Test::Unit::TestCase
     assert_equal(13.59, probability)
   end
 
+  def test_normal_distribution_between_both_before_mean
+    stat = Statistic.new
+    probability = stat.normal_distribution("between", 100.0, 10.0, "90", "95")
+    assert_equal(14.98, probability)
+  end
+
   def test_normal_distribution_less_before_mean
     stat = Statistic.new
     probability = stat.normal_distribution("less-than", 100.0, 10.0, "93", "")
@@ -299,5 +319,24 @@ class EasyTest < Test::Unit::TestCase
     stat = Statistic.new
     probability = stat.normal_distribution("less-and-greater-than", 22.0, 4.0, "25", "20")
     assert_equal(46.49, probability)
+  end
+
+  # Array.to_sentence tests
+  def test_array_to_sentence_with_length_zero
+    assert_equal("", [].to_sentence)
+  end
+
+  def test_array_to_sentence_with_length_one
+    assert_equal("1", [1].to_sentence)
+  end
+
+  def test_array_to_sentence_with_length_two
+    assert_equal("1 e 2", [1,2].to_sentence)
+  end
+
+  def test_array_to_sentence_with_length_greater_than_2
+    assert_equal("1, 2 e 3", [1,2,3].to_sentence)
+    assert_equal("1, 2, 3 e 4", [1,2,3,4].to_sentence)
+    assert_equal("1, 2, 3, 4 e 5", [1,2,3,4,5].to_sentence)
   end
 end
