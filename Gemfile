@@ -10,5 +10,6 @@ gem 'json'
 
 group :test do
   gem 'rack-test'
+  gem 'coveralls', :require => false
   gem 'simplecov', :require => false
 end
