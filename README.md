@@ -1,11 +1,9 @@
 # Easy Statistic
 
 [![Build Status](https://secure.travis-ci.org/bmsatierf/easy-statistic.png?branch=master)][travis]
-[![Dependency Status](https://gemnasium.com/bmsatierf/easy-statistic.png)][gemnasium]
 [![Coverage Status](https://coveralls.io/repos/bmsatierf/easy-statistic/badge.png?branch=master)][coveralls]
 
 [travis]: http://travis-ci.org/bmsatierf/easy-statistic
-[gemnasium]: https://gemnasium.com/bmsatierf/easy-statistic
 [coveralls]: https://coveralls.io/r/bmsatierf/easy-statistic
 
 Basic statistic app built with Sinatra, jQuery (plus some ajax) and Bootstrap. At this moment the following operations/calculations are available:
