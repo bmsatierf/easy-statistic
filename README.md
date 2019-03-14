@@ -6,7 +6,7 @@
 [travis]: http://travis-ci.org/bmsatierf/easy-statistic
 [coveralls]: https://coveralls.io/r/bmsatierf/easy-statistic
 
-Basic statistic app built with Sinatra, jQuery (plus some ajax) and Bootstrap. At this moment the following operations/calculations are available:
+Basic statistic app built with Sinatra, jQuery (plus some ajax) and Bootstrap. The following operations/calculations are available:
 
 * Discrete distribution: http://en.wikipedia.org/wiki/List_of_probability_distributions#Discrete_distributions
 * Continuous distribution: http://en.wikipedia.org/wiki/List_of_probability_distributions#Continuous_distributions
@@ -20,8 +20,6 @@ Basic statistic app built with Sinatra, jQuery (plus some ajax) and Bootstrap. A
 * Coefficient of variation: http://en.wikipedia.org/wiki/Coefficient_of_variation
 * Normal distribution: http://en.wikipedia.org/wiki/Normal_distribution
 * Basic charts, powered by Highcharts: http://www.highcharts.com
-
-More content is coming soon.
 
 ## Development
 
@@ -39,9 +37,3 @@ Most of the tests are based on class exercises.
 ```console
 $ bundle exec ruby easy_test.rb
 ```
-
-## To-dos
-
-It would also be nice to achieve at least some responsiveness on Charts session. At this moment the charts looks nice 'on my computer' =)
-
-I'm also thinking about using D3 (http://d3js.org) to plot some interesting Gaussian functions on normal distribution session, allowing better data visualization. Help here would be much appreciated.
