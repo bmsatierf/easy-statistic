@@ -197,7 +197,7 @@ class EasyTest < Test::Unit::TestCase
     assert_equal("N/A", stat.mode)
   end
 
-  def test_discrete_median
+  def test_continuous_median
     stat = Statistic.new("1000,1800,2000,2000,2000,2800,3000,3000,3100,4000")
     stat.process_data("continuous", "population")
     assert_equal("2001.000", stat.median)
