@@ -27,7 +27,7 @@ Be sure Bundler is installed. After cloning the repo:
 
 ```console
 $ bundle install
-$ bundle exec rackup
+$ rackup
 ```
 
 ## Testing
@@ -35,5 +35,5 @@ $ bundle exec rackup
 Most of the tests are based on class exercises.
 
 ```console
-$ bundle exec ruby easy_test.rb
+$ ruby easy_test.rb
 ```
