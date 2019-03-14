@@ -21,7 +21,7 @@ table { margin-top: 25px; }
 #probability-question, #probability-answer, #ajax-loader, #mean-value, #update-mean, #standard-deviation-value, #update-standard-deviation { display: none; }
 #update-mean, #update-standard-deviation { margin-right: 20px; }
 #edit-mean, #edit-standard-deviation { font-weight: bolder; }
-.chart { position: relative; width:43%; height: 350px; }
+.chart { position: relative; width:100%; height: 350px; }
 .external {padding-right: 15px; background: #fff url("../img/external.png") no-repeat right center; }
 .alert { display: none; }
 .footer { margin-top: 50px; border-top: 1px solid #ccc; }
