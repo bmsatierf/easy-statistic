@@ -1,6 +1,6 @@
 language: ruby
-script: "bundle exec ruby easy_test.rb"
+script: "ruby easy_test.rb"
 rvm:
-  - 2.0.0
+  - 2.6.2
 gemfile:
   - Gemfile
